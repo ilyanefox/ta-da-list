@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>$Title$</title>
+</head>
+<body>
+<form method="post" th:action="@{/profile/}" th:object="${category}" class="col card p-3 mb-5">
+    <div class="form-group">
+        <label for="name">Add a category</label>
+        <input id="name" placeholder="Ex: Work, School, etc." required type="text" th:field="*{name}"
+               class="form-control"/>
+    </div>
+    <input type="submit" class="btn btn-primary" value="Add Category">
+</form>
+
+<span th:if="${#lists.isEmpty(categories)}">
+    <p colspan="5">No categories found. Add some...!</p>
+</span>
+<ul th:each="category : ${categories}">
+    <li th:text="${category.name}"></li>
+
+</ul>
+</body>
+</html>

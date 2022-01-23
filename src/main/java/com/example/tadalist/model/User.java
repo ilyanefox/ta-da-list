@@ -1,7 +1,7 @@
 package com.example.tadalist.model;
 
 import com.example.tadalist.AbstractEntity;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+//import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -12,7 +12,7 @@ public class User extends AbstractEntity {
 
     //    private String username;
     private String email;
-    private String pwHash;
+//    private String pwHash;
 
     private String firstName;
 
@@ -29,15 +29,15 @@ public class User extends AbstractEntity {
     private List<Task> taskList = new ArrayList<>();
 
 
-    private static final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+//    private static final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
     public User() {
     }
 
 
-    public User(String email, String pwHash, String firstName, List<Category> categories, List<Task> taskList) {
+    public User(String email, String firstName, List<Category> categories, List<Task> taskList) {
         this.email = email;
-        this.pwHash = pwHash;
+//        this.pwHash = pwHash;
         this.firstName = firstName;
         this.categories = categories;
         this.taskList = taskList;
@@ -48,13 +48,13 @@ public class User extends AbstractEntity {
         this.categories = categories;
     }
 
-    public String getPwHash() {
-        return pwHash;
-    }
-
-    public void setPwHash(String password) {
-        this.pwHash = encoder.encode(password);
-    }
+//    public String getPwHash() {
+//        return pwHash;
+//    }
+//
+//    public void setPwHash(String password) {
+//        this.pwHash = encoder.encode(password);
+//    }
 
     public String getEmail() {
         return email;
@@ -88,9 +88,9 @@ public class User extends AbstractEntity {
         this.taskList = taskList;
     }
 
-    public boolean isMatchingPassword(String password) {
-        return encoder.matches(password, pwHash);
-    }
+//    public boolean isMatchingPassword(String password) {
+//        return encoder.matches(password, pwHash);
+//    }
 
 }
 
