@@ -10,11 +10,8 @@ import javax.persistence.*;
 
         private String name;
 
-//            @ManyToOne
-//    @Cascade(cascadeCascadeType.SAVE_UPDATE)
-//    @JoinColumn(name = "category_id")
-        @OneToOne(cascade = CascadeType.ALL)
-        @JoinColumn(name = "category_id", referencedColumnName = "id")
+        @ManyToOne(cascade = CascadeType.ALL)
+//        @JoinColumn(name = "category_id", referencedColumnName = "id")
         private Category category;
 
         public Task() {
