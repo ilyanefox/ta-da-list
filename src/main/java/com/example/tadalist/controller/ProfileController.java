@@ -6,6 +6,7 @@ import com.example.tadalist.model.Category;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -31,7 +32,7 @@ public class ProfileController {
     }
 
     @PostMapping("")
-    public String createCategory(Model model, @ModelAttribute Category newCategory) throws Exception {
+    public String createCategory(Model model, @ModelAttribute Category newCategory) {
 //        String categoryName = newCategory.getName().toLowerCase();
 
 ////        Category category = new Category();
@@ -44,15 +45,16 @@ public class ProfileController {
         for (Category category : categories) {
             if (!category.getName().toLowerCase().equals(newCategory.getName().toLowerCase())) {
 //                if (category.getName().toLowerCase().equals(newCategory.getName().toLowerCase()))
-                try {
-                    categoryRepository.save(newCategory);
-                } catch (Exception exception) {
-                    model.addAttribute("errorMessage", "Uh oh! This category already exists");
-                }
+                categoryRepository.save(newCategory);
+
             }
+//            }
+//        }
+
         }
         return "redirect:/profile/";
     }
+
     @PostMapping("/delete")
     public String deleteCategory(Model model, @ModelAttribute String name) {
 
