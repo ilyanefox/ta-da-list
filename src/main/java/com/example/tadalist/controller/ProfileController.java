@@ -35,25 +35,23 @@ public class ProfileController {
     public String createCategory(Model model, @ModelAttribute Category newCategory) {
 //        String categoryName = newCategory.getName().toLowerCase();
 
-////        Category category = new Category();
+//        Category category = new Category();
 //        List<Category> categories = (List<Category>) categoryRepository.findAll();
 //        for (Category category : categories) {
 //            if (!category.getName().toLowerCase().equals(newCategory.getName().toLowerCase()))
 //    {
 
-        List<Category> categories = (List<Category>) categoryRepository.findAll();
-        for (Category category : categories) {
-            if (!category.getName().toLowerCase().equals(newCategory.getName().toLowerCase())) {
-//                if (category.getName().toLowerCase().equals(newCategory.getName().toLowerCase()))
+//        List<Category> categories = (List<Category>) categoryRepository.findAll();
+//        for (Category category : categories) {
+////            if (!categories.contains(newCategory)) {
+//            if (!category.getName().toLowerCase().equals(newCategory.getName().toLowerCase())) {
+//                if (category.getName().toLowerCase().equals(newCategory.getName().toLowerCase())){
                 categoryRepository.save(newCategory);
 
-            }
-//            }
-//        }
 
-        }
         return "redirect:/profile/";
     }
+
 
     @PostMapping("/delete")
     public String deleteCategory(Model model, @ModelAttribute String name) {
@@ -62,6 +60,25 @@ public class ProfileController {
         return "redirect:/profile/";
     }
 
+//    @GetMapping("/delete")
+//    public String getCategoriesToDelete(Model model) {
+//        List<Category> categories = (List<Category>) categoryRepository.findAll();
+//        model.addAttribute("categories", categories);
+//        model.addAttribute("category", new Category());
+//        return "/delete";
+//    }
+//
+//    @PostMapping("/delete")
+//    public String deleteCategory(Model model, @ModelAttribute Category oldCategory) {
+//        List<Category> categories = (List<Category>) categoryRepository.findAll();
+//        for (Category category : categories) {
+//            if (category.getName().equals(oldCategory.getName())) {
+////
+//                categoryRepository.delete(category);
+//            }
+//        }
+//        return "/profile";
+//    }
 }
 
 
