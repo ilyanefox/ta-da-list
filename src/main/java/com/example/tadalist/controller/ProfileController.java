@@ -6,12 +6,7 @@ import com.example.tadalist.model.Category;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -26,6 +21,7 @@ public class ProfileController {
     private CategoryRepository categoryRepository;
 
 
+
     @GetMapping("")
     public String getCategories(Model model) {
         List<Category> categories = (List<Category>) categoryRepository.findAll();
@@ -35,18 +31,33 @@ public class ProfileController {
     }
 
     @PostMapping("")
-    public String createCategory(Model model, @ModelAttribute Category newCategory) {
+    public String createCategory(Model model, @ModelAttribute Category newCategory) throws Exception {
 //        String categoryName = newCategory.getName().toLowerCase();
+
 ////        Category category = new Category();
-//        String message = "";
 //        List<Category> categories = (List<Category>) categoryRepository.findAll();
 //        for (Category category : categories) {
-//            if (!category.getName().toLowerCase().equals(newCategory.getName().toLowerCase())) {
-                categoryRepository.save(newCategory);
-//            }
-//        }
-        return "redirect:/profile/";
+//            if (!category.getName().toLowerCase().equals(newCategory.getName().toLowerCase()))
+//    {
 
+        List<Category> categories = (List<Category>) categoryRepository.findAll();
+        for (Category category : categories) {
+            if (!category.getName().toLowerCase().equals(newCategory.getName().toLowerCase())) {
+//                if (category.getName().toLowerCase().equals(newCategory.getName().toLowerCase()))
+                try {
+                    categoryRepository.save(newCategory);
+                } catch (Exception exception) {
+                    model.addAttribute("errorMessage", "Uh oh! This category already exists");
+                }
+            }
+        }
+        return "redirect:/profile/";
+    }
+    @PostMapping("/delete")
+    public String deleteCategory(Model model, @ModelAttribute String name) {
+
+        categoryRepository.deleteByName(name);
+        return "redirect:/profile/";
     }
 
 }
