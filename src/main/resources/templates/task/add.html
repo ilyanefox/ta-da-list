@@ -1,17 +1,26 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" integrity="sha512-UJfAaOlIRtdR+0P6C3KUoTDAxVTuy3lnSXLyLKlHYJlcSU8Juge/mjeaxDNMlw9LgeIotgz5FP8eUQPhX1q10A==" crossorigin="anonymous" referrerpolicy="no-referrer" />"
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+
     <meta charset="UTF-8">
     <title>$Title$</title>
 </head>
 <body>
+<div class="container">
 <form method="post">
     <div class="form-group">
         <label th:for="name">Task</label>
         <input class="form-control" th:field="${task.name}" />
-        <span th:errors="${task.name}" class="error"></span>
+<!--        <span th:errors="${task.name}" class="error"></span>-->
     </div>
-<!--    Choose from list of categories -->
+    <a class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a>
+
+    <!--    Choose from list of categories -->
 
 <!--    <div class="form-group">-->
 <!--        <label th:for="category">Category</label>-->
@@ -19,5 +28,7 @@
 <!--        <span th:errors="${task.category}" class="error"></span>-->
 <!--    </div>-->
 </form>
+</div>
+<script type="text/javascript" src="js/materialize.min.js"></script>
 </body>
 </html>

@@ -39,13 +39,13 @@ public class ProfileController {
 //        String categoryName = newCategory.getName().toLowerCase();
 ////        Category category = new Category();
 //        String message = "";
-        List<Category> categories = (List<Category>) categoryRepository.findAll();
-        for (Category category : categories) {
-            if (!category.getName().toLowerCase().equals(newCategory.getName().toLowerCase())) {
+//        List<Category> categories = (List<Category>) categoryRepository.findAll();
+//        for (Category category : categories) {
+//            if (!category.getName().toLowerCase().equals(newCategory.getName().toLowerCase())) {
                 categoryRepository.save(newCategory);
-            }
-        }
-        return "redirect:/";
+//            }
+//        }
+        return "redirect:/profile/";
 
     }
 
