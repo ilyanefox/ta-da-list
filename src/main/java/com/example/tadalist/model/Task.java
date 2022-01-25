@@ -4,10 +4,14 @@ import com.example.tadalist.AbstractEntity;
 
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 @Entity
     public class Task extends AbstractEntity {
 
+        @NotBlank(message = "Oops! A task name is required")
+        @Size(max = 25, message = "Sorry! Task cannot exceed 25 characters")
         private String name;
 
         @ManyToOne(cascade = CascadeType.ALL)

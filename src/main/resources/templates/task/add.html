@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>$Title$</title>
+</head>
+<body>
+<form method="post">
+    <div class="form-group">
+        <label th:for="name">Task</label>
+        <input class="form-control" th:field="${task.name}" />
+        <span th:errors="${task.name}" class="error"></span>
+    </div>
+<!--    Choose from list of categories -->
+
+<!--    <div class="form-group">-->
+<!--        <label th:for="category">Category</label>-->
+<!--        <input class="form-control" th:field="${task.category}" />-->
+<!--        <span th:errors="${task.category}" class="error"></span>-->
+<!--    </div>-->
+</form>
+</body>
+</html>

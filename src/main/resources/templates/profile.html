@@ -18,7 +18,10 @@
         <label for="name">Your Categories</label>
         <input id="name" placeholder="Ex: Work, School, etc." required type="text" th:field="*{name}"
                class="form-control"/>
-
+        <div th:if="${#fields.hasErrors('global')}">
+<!--            <h3>Global errors:</h3>-->
+            <p th:each="err : ${#fields.errors('global')}" th:text="${err}" class="error" />
+        </div>
     <button type="submit" class="btn btn-info btn-lg btn-floating">
         <i class="fas fa-plus"></i>
     </button>
@@ -34,11 +37,9 @@
     </h4>
 
 </span>
-
+    <a th:href="@{'/task/list'}">To-do List</a>
     <!--    <input type="submit" class="btn btn-info" value="Add Category">-->
 
 </form>
-
-<input type="button" class="btn btn-info" value="To-do-list ">
 </body>
 </html>
