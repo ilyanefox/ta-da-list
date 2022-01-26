@@ -5,6 +5,7 @@ import com.example.tadalist.AbstractEntity;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
@@ -14,6 +15,7 @@ import javax.validation.constraints.Size;
         @Size(max = 25, message = "Sorry! Task cannot exceed 25 characters")
         private String name;
 
+        @NotNull(message = "Oops! A category is required")
         @ManyToOne(cascade = CascadeType.ALL)
 //        @JoinColumn(name = "category_id", referencedColumnName = "id")
         private Category category;
