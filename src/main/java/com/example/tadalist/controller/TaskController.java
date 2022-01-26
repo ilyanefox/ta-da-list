@@ -23,27 +23,27 @@ public class TaskController {
     @Autowired
     CategoryRepository categoryRepository;
 
-    @GetMapping("add")
+    @GetMapping("/add")
     private String displayAddTaskForm(Model model) {
+        model.addAttribute("categories", categoryRepository.findAll());
         model.addAttribute(new Task());
-        return "task/add";
+        return "/task/add";
     }
 
-    @PostMapping("add")
+    @PostMapping("/add")
     private String processAddTask(Model model, @ModelAttribute @Valid Task newTask, Errors errors) {
-        List<Category> categories = (List<Category>) categoryRepository.findAll();
-        model.addAttribute("categories", categories);
+
         if (errors.hasErrors()) {
-            return "task/add";
+            return "/task/add";
         }
         taskRepository.save(newTask);
-        return "task/add";
+        return "redirect:/task/add";
     }
 
-    @GetMapping("list")
+    @GetMapping("/list")
     private String displayTaskList(Model model) {
 
         model.addAttribute("tasks", taskRepository.findAll());
-        return "redirect/list/";
+        return "redirect:/list/";
     }
 }

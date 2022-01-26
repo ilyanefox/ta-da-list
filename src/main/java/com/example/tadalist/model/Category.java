@@ -3,8 +3,9 @@ package com.example.tadalist.model;
 import com.example.tadalist.AbstractEntity;
 
 import javax.persistence.Entity;
+import javax.validation.constraints.NotBlank;
 
-    @Entity
+@Entity
     public class Category extends AbstractEntity {
 
         private String name;

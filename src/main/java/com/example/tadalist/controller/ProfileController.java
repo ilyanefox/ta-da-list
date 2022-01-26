@@ -41,11 +41,6 @@ public class ProfileController {
 //            if (!category.getName().toLowerCase().equals(newCategory.getName().toLowerCase()))
 //    {
 
-//        List<Category> categories = (List<Category>) categoryRepository.findAll();
-//        for (Category category : categories) {
-////            if (!categories.contains(newCategory)) {
-//            if (!category.getName().toLowerCase().equals(newCategory.getName().toLowerCase())) {
-//                if (category.getName().toLowerCase().equals(newCategory.getName().toLowerCase())){
                 categoryRepository.save(newCategory);
 
 
