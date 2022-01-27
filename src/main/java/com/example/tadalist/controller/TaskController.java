@@ -44,6 +44,6 @@ public class TaskController {
     private String displayTaskList(Model model) {
 
         model.addAttribute("tasks", taskRepository.findAll());
-        return "redirect:/list/";
+        return "/task/list";
     }
 }

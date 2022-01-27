@@ -17,7 +17,7 @@ import javax.validation.constraints.Size;
 
         @NotNull(message = "Oops! A category is required")
         @ManyToOne(cascade = CascadeType.ALL)
-//        @JoinColumn(name = "category_id", referencedColumnName = "id")
+        @JoinColumn(name = "category_id", referencedColumnName = "id")
         private Category category;
 
         public Task() {
