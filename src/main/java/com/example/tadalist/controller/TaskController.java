@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("task")
@@ -43,7 +44,32 @@ public class TaskController {
     @GetMapping("/list")
     private String displayTaskList(Model model) {
 
+
+
         model.addAttribute("tasks", taskRepository.findAll());
         return "/task/list";
+    }
+
+//    @PostMapping("/list")
+//    private String checkOffTask(Model model, @RequestBody Task task) {
+//
+//                task.setCompleted(true);
+//                taskRepository.save(task);
+////        if (taskIds != null) {
+////            for (int id  : taskIds) {
+////
+////                taskRepository.deleteById(id);
+////            }
+////            task.isCompleted();
+////            }
+//
+//
+////        }
+//        return "/task/congrats";
+//    }
+
+    @GetMapping("/congrats")
+    private String displayCongratsPage(Model model) {
+        return "/task/congrats";
     }
 }
