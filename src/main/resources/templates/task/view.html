@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<div th:replace = "fragments :: header"></div>
+<div th:replace = "fragments :: nav"></div>
+<body>
+<div class="container">
+<div class="card teal lighten-3" >
+    <div class="card-content white-text">
+        <form action="#" th:action="@{/task/view/}" th:object="${task}">
+            <div class="form-group">
+        <span class="card-title" th:text="${task.name}"></span>
+
+        <p  th:text="${task.category.name}"></p>
+
+
+        <!--                <button th:type="submit"  class="btn-floating halfway-fab waves-effect waves-light red accent-2"><i class="material-icons">check</i></button>-->
+        <button th:type="submit" class="btn-floating btn-large halfway-fab waves-effect waves-light red accent-2"><i class="material-icons">check</i></button>
+    </div>
+    <div class="card-action">
+        <a href="#">This is a link</a>
+        <a href="#">This is a link</a>
+    </div>
+    <!--                <input type="hidden" name="taskId" th:value="${task.id}"/>-->
+        </form>
+    </div>
+</div>
+</div>
+<div th:fragment = "script"></div>
+</body>
+</html>

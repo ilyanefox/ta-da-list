@@ -16,19 +16,17 @@ import javax.validation.constraints.Size;
         private String name;
 
         @NotNull(message = "Oops! A category is required")
-        @ManyToOne(cascade = CascadeType.ALL)
+        @ManyToOne
         @JoinColumn(name = "category_id", referencedColumnName = "id")
         private Category category;
 
-    private boolean isCompleted;
 
         public Task() {
         }
 
-        public Task(String name, Category category, boolean isCompleted) {
+        public Task(String name, Category category) {
             this.name = name;
             this.category = category;
-            this.isCompleted = false;
         }
 
         public String getName() {
@@ -47,12 +45,5 @@ import javax.validation.constraints.Size;
             this.category = category;
         }
 
-    public boolean isCompleted() {
-        return isCompleted;
-    }
 
-    public void setCompleted(boolean completed) {
-        isCompleted = completed;
-        return;
     }
-}

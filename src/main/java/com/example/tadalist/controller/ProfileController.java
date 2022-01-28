@@ -44,7 +44,7 @@ public class ProfileController {
                 categoryRepository.save(newCategory);
 
 
-        return "redirect:/profile/";
+        return "redirect:/profile";
     }
 
 
@@ -52,7 +52,7 @@ public class ProfileController {
     public String deleteCategory(Model model, @ModelAttribute String name) {
 
         categoryRepository.deleteByName(name);
-        return "redirect:/profile/";
+        return "redirect:/profile";
     }
 
 //    @GetMapping("/delete")

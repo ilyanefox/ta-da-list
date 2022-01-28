@@ -7,17 +7,18 @@
 <div class="row">
 <!--    <div class="col s">-->
 
-        <div class="card teal lighten-3 col-sm-4 mx-2"  th:each="task : ${tasks}">
+        <div class="card teal lighten-3 col-sm-4 mx-2"  th:each="task : ${tasks}" >
             <div class="card-content white-text">
-                <form th:method="post" th:action="@{/task/list/}" th:object="${task.id}">
+<!--                <form action="#" th:action="@{/task/list/}" th:object="${task}">-->
+
                 <span class="card-title" th:text="${task.name}"></span>
 
                 <p  th:text="${task.category.name}"></p>
 
-                </form>
-                <input type="hidden" name="taskId" th:value="${task.id}"/>
-                <button  th:href="@{/task/congrats/}" th:type="submit" class="btn-floating halfway-fab waves-effect waves-light red accent-2"><i class="material-icons">check</i></button>
-<!--                <button  type=submit class="btn-floating halfway-fab waves-effect waves-light red accent-2"><i class="material-icons">check</i></button>-->
+<!--                </form>-->
+
+<!--                <button th:type="submit"  class="btn-floating halfway-fab waves-effect waves-light red accent-2"><i class="material-icons">check</i></button>-->
+                <a  th:href="@{/task/view/{id}(id=${task.id})}" class="btn-floating halfway-fab waves-effect waves-light red accent-2"><i class="material-icons">edit</i></a>
             </div>
             <div class="card-action">
                 <a href="#">This is a link</a>

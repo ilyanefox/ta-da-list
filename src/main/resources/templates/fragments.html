@@ -23,7 +23,7 @@
 <div th:fragment = "nav">
     <nav>
         <div class="nav-wrapper">
-            <a href="#" class="brand-logo">TaDa!</a>
+            <a th:href="@{/task/list/}" class="brand-logo center"><i class="large material-icons">check_circle</i>TaDa!</a>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
                 <li><a th:href="@{/task/list/}">Your List</a></li>
                 <li><a th:href="@{/profile/}">Profile</a></li>

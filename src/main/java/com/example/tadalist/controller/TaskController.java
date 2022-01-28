@@ -45,13 +45,29 @@ public class TaskController {
     private String displayTaskList(Model model) {
 
 
-
         model.addAttribute("tasks", taskRepository.findAll());
         return "/task/list";
     }
 
-//    @PostMapping("/list")
-//    private String checkOffTask(Model model, @RequestBody Task task) {
+    @GetMapping("view/{id}")
+    public String checkOffTask(@PathVariable("id") Integer id, Model model) {
+        Optional<Task> optTask = taskRepository.findById(id);
+        if (optTask.isPresent()) {
+            Task task = optTask.get();
+            model.addAttribute("task", task);
+//            taskRepository.delete(optTask);
+            taskRepository.delete(task);
+            return "/task/congrats";
+        } else {
+            return "task/list";
+
+        }
+    }
+//        @PostMapping("/view")
+//        private String checkOffTask(Model model, @RequestBody Task task) {
+//        taskRepository.delete(task);
+//        return "/task/congrats";
+//        }
 //
 //                task.setCompleted(true);
 //                taskRepository.save(task);
@@ -67,6 +83,31 @@ public class TaskController {
 ////        }
 //        return "/task/congrats";
 //    }
+//    @PostMapping("/list/")
+//    public String processDeleteEventsForm(@RequestParam(required = false) int[] taskIds) {
+//
+//        if (taskIds != null) {
+//            for (int id : taskIds) {
+//                taskRepository.deleteById(id);
+//            }
+//        }
+//
+//        return "task/list";
+//    }
+//    public String deleteUser(@PathVariable("id") Integer id, Model model) {
+//        Optional<Task> optTask = taskRepository.findById(id);
+//        if (optTask.isPresent()) {
+//            Task task =  optTask.get();
+////            taskRepository.delete(optTask);
+//            taskRepository.delete(task);
+//            return "/task/congrats";
+//        } else {
+//            return "/list";
+//        task.setCompleted(true);
+//    taskRepository.save(task);
+
+
+
 
     @GetMapping("/congrats")
     private String displayCongratsPage(Model model) {
