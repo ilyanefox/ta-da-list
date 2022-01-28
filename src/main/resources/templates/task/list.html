@@ -18,7 +18,7 @@
 <!--                </form>-->
 
 <!--                <button th:type="submit"  class="btn-floating halfway-fab waves-effect waves-light red accent-2"><i class="material-icons">check</i></button>-->
-                <a  th:href="@{/task/view/{id}(id=${task.id})}" class="btn-floating halfway-fab waves-effect waves-light red accent-2"><i class="material-icons">edit</i></a>
+                <a  th:href="@{/task/view/{id}(id=${task.id})}" class="btn-floating halfway-fab waves-effect waves-light red accent-2"><i class="material-icons">check</i></a>
             </div>
             <div class="card-action">
                 <a href="#">This is a link</a>
@@ -29,9 +29,14 @@
 
 
         </div>
+    <div class="container">
     <span th:if="${#lists.isEmpty(tasks)}">
-        <p>You don't have any tasks! Add some...</p>
+
+        <h4>You don't have any tasks! Add some...</h4>
+        <a th:href="@{/task/add}" class="waves-effect waves-light btn-large"><i class="material-icons left">add</i>Task</a>
+<!-- <a  th:href="@{/task/add}" class="btn-floating btn-large halfway-fab waves-effect waves-light red accent-2"><i class="material-icons">add</i></a>-->
         </span>
+    </div>
     </div>
 </div>
 <!--</div>-->
