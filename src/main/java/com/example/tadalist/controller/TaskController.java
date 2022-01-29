@@ -44,7 +44,7 @@ public class TaskController {
     @GetMapping("/list")
     private String displayTaskList(Model model) {
 
-
+        model.addAttribute("categories", categoryRepository.findAll());
         model.addAttribute("tasks", taskRepository.findAll());
         return "/task/list";
     }

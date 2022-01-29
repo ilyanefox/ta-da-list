@@ -4,6 +4,14 @@
 <div th:replace = "fragments :: nav"></div>
 <body>
 <div class="container">
+    <div class="form-group">
+        <h5><span th:each="category : ${categories}">
+
+        <a href="#" class="badge rounded-pill bg-warning" th:text="${category.name}"></a>
+        </span>
+        </h5>
+
+    </div>
 <div class="row">
 <!--    <div class="col s">-->
 

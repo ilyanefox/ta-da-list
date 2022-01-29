@@ -32,15 +32,16 @@ public class ProfileController {
     }
 
     @PostMapping("")
-    public String createCategory(Model model, @ModelAttribute Category newCategory) {
-//        String categoryName = newCategory.getName().toLowerCase();
+    public String createCategory(Model model, @ModelAttribute Category newCategory, Errors errors) {
 
 //        Category category = new Category();
 //        List<Category> categories = (List<Category>) categoryRepository.findAll();
 //        for (Category category : categories) {
 //            if (!category.getName().toLowerCase().equals(newCategory.getName().toLowerCase()))
-//    {
-
+////    {
+//        if (errors.hasErrors()) {
+//            return "profile";
+//        }
                 categoryRepository.save(newCategory);
 
 

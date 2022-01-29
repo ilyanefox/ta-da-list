@@ -6,30 +6,30 @@
 
 <body>
 <div class="container">
-
-<form method="post" th:action="@{/profile/}" th:object="${category}" >
     <h3>Your Categories</h3>
     <div class="form-group">
-        <h4><span th:each="category : ${categories}">
+        <h5><span th:each="category : ${categories}">
 
-        <span class="badge rounded-pill bg-warning" th:text="${category.name}">
+        <a href="#" class="badge rounded-pill bg-warning" th:text="${category.name}"></a>
         </span>
-    </span>
-        </h4>
+        </h5>
         <br>
         <br>
          <span th:if="${#lists.isEmpty(categories)}">
     <p colspan="5">No categories found. Add some...!</p>
-</span>
+    </span>
+        <form method="post" th:action="@{/profile/}" th:object="${category}" >
       <div>
-        <label for="name">Add a category</label>
-        <input id="name" placeholder="Ex: Work, School..." required type="text" th:field="*{name}"
+        <label for="name"></label>
+        <input id="name" placeholder="Add Category! Ex: Work, School..." required type="text" th:field="*{name}"
                class="form-control"/>
         </div>
 
     <button type="submit" class="btn-floating btn-large waves-effect waves-light teal lighten-2"><i class="material-icons">add</i></button>
-    </div>
 </form>
+    </div>
+
+
     <a th:href="@{'/task/add'}">Add Task</a>
     <br>
     <a th:href="@{'/task/list'}">TaDa List</a>

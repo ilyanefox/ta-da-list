@@ -2,6 +2,7 @@ package com.example.tadalist.model;
 
 import com.example.tadalist.AbstractEntity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.validation.constraints.NotBlank;
 
