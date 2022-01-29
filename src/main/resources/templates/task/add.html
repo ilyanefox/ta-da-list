@@ -6,87 +6,42 @@
 
 
     <div class="container">
-<form method="post" >
+<form method="post" action="#">
     <div class="form-group">
         <label th:for="name">Task</label>
-        <input class="form-control" placeholder="Add a task" required th:field="${task.name}" />
+        <input class="form-control" placeholder="Add a task!" required th:field="${task.name}" />
         <span th:errors="${task.name}" class="error"></span>
-<!--    </div>-->
 
-<!--    <div class="form-group">-->
-<!--        <label th:for="category">Category</label>-->
         <select class="form-select" name="category" th:required="true">
                     <option selected  value="">Choose a category</option>
                     <option th:each="category : ${categories}"
                             th:text="${category.name}"
                             th:value="${category.id}"></option>
                 </select>
-<!--        <a th:href="@{'/employers/add'}">Add Employers</a>-->
-        <button type="submit" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></button>
+<br>
+        <div class="form-group">
+        <p>
+            <label th:for="priority">
+                <input type="checkbox" id="priority" name="priority" th:checked="${task.priority}">
+<!--                <input type="checkbox" name="priority" th:value="${task.priority}"/>-->
+                <span><i class="material-icons">star</i>Priority</span>
+            </label>
+        </p>
+        </div>
+<br>
+        <button type="submit" class="btn-floating btn-large waves-effect waves-light teal lighten-2"><i class="material-icons">add</i></button>
     </div>
 
 
-<!--    <input type="submit" value="Add Job" />-->
+
 </form>
-        <a th:href="@{'/task/list'}">TaDa List</a>
+        <a th:href="@{'/task/list'}">TaDa! List</a>
 
 </div>
 
-<!--<div class="container">-->
-<!--<form method="post" th:action="@{/task/add}" th:object="${task}">-->
-<!--    <div class="form-group" >-->
-<!--        <label th:for="name">Task-->
-<!--            <input th:field="${task.name}" placeholder="Add task"  class="form-control" type="text" required/>-->
-<!--        </label>-->
-<!--        <span th:errors="${task.name}"  class="error" ></span>-->
-<!--    </div>-->
 
-<!--<div class="form-group">-->
-<!--    <select class="form-select" aria-label="Default select example" name="category">-->
-<!--        <option selected>Choose a category</option>-->
-<!--        <option th:each="category : ${categories}"-->
-<!--                th:text="${category.name}"-->
-<!--                th:value="${category.id}"></option>-->
-<!--    </select>-->
-<!--    <span th:errors="${task.category}" class="error" ></span>-->
-<!--</div>-->
-<!--</form>-->
-<!--    <br>-->
-<!--    <a type="submit" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a>-->
-
-<!--</div>-->
 <div th:replace= "fragments :: script" ></div>
 </body>
 </html>
 
 
-<!--    <a th:href="@{'/task/add'}">Add Task</a>-->
-<!--    <a type="submit" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a>-->
-
-<!--    Choose from list of categories -->
-<!--    <div class="form-group">-->
-<!--        <label th:for="category">Category</label>-->
-<!--        <input id="category" class="form-control" required type="text" th:field="${task.category}"/>-->
-
-<!--        <span th:errors="${task.category}" class="error"></span>-->
-<!--    </div>-->
-
-<!--    <a type="submit" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a>-->
-
-<!--        <h4><span >-->
-
-<!--        <span class="badge rounded-pill bg-warning" th:text="${category.name}">-->
-<!--        </span>-->
-<!--    </span>-->
-<!--        </h4>-->
-<!--        <br>-->
-<!--        <br>-->
-<!--        <span th:if="${#lists.isEmpty(categories)}">-->
-<!--    <p colspan="5">No categories found. Add some...!</p>-->
-<!--</span>-->
-
-<!--    <div class="form-group">-->
-<!--        <label th:for="category">Category</label>-->
-<!--        <input class="form-control" th:field="${task.category}" />-->
-<!--        <span th:errors="${task.category}" class="error"></span>-->
-<!--    </div>-->

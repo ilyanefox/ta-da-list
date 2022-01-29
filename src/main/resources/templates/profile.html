@@ -7,7 +7,7 @@
 <body>
 <div class="container">
 
-<form method="post" th:action="@{/profile/}" th:object="${category}" class="col card p-3 mb-5">
+<form method="post" th:action="@{/profile/}" th:object="${category}" >
     <h3>Your Categories</h3>
     <div class="form-group">
         <h4><span th:each="category : ${categories}">
