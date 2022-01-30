@@ -18,6 +18,8 @@
         </h5>
 
     </div>
+    <br>
+
 <div class="row">
 <!--    <div class="col s">-->
 
@@ -47,9 +49,8 @@
     <div class="container">
     <span th:if="${#lists.isEmpty(tasks)}">
 
-        <h4>You don't have any tasks!</h4>
-        <h5>Add some...</h5>
-        <a th:href="@{/task/add}" class="waves-effect waves-light btn-large"><i class="material-icons left">add</i>Task</a>
+        <h5>Wahoo! You don't have any tasks!</h5>
+        <a th:href="@{/task/add}" class="waves-effect waves-light btn-large"><i class="material-icons left">add</i>Add a Task</a>
 <!-- <a  th:href="@{/task/add}" class="btn-floating btn-large halfway-fab waves-effect waves-light red accent-2"><i class="material-icons">add</i></a>-->
         </span>
     </div>
