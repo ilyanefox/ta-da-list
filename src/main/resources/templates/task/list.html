@@ -5,59 +5,34 @@
 <body>
 <div class="container">
     <div class="form-group">
-
         <h5>
-<!--            <a href="#" class="badge rounded-pill bg-warning"><i class="material-icons">star</i></a>-->
             <a href="#" class="badge rounded-pill blue-grey lighten-2" th:text="All"></a>
             <a href="#" class="badge rounded-pill bg-warning" th:text="Priority"></a>
-
             <span th:each="category : ${categories}">
-
-        <a th:href="@{/task/filter/{id}(id=${category.id})}" class="badge rounded-pill bg-warning" th:text="${category.name}"></a>
-        </span>
+            <a th:href="@{/task/filter/{id}(id=${category.id})}" class="badge rounded-pill bg-warning" th:text="${category.name}"></a>
+            </span>
         </h5>
-
     </div>
     <br>
-
-<div class="row">
-<!--    <div class="col s">-->
-
+    <div class="row">
         <div class="card teal lighten-3 col-sm-4 mx-2"  th:each="task : ${tasks}" >
             <div class="card-content white-text">
-<!--                <form action="#" th:action="@{/task/list/}" th:object="${task}">-->
-
                 <span class="card-title" th:text="${task.name}"></span>
                 <span class="badge rounded-pill bg-warning" th:text="${task.category.name}"></span>
-<!--                <p  th:text="${task.category.name}"></p>-->
-
-<!--                </form>-->
-
-<!--                <button th:type="submit"  class="btn-floating halfway-fab waves-effect waves-light red accent-2"><i class="material-icons">check</i></button>-->
                 <a  th:href="@{/task/view/{id}(id=${task.id})}" class="btn-floating halfway-fab waves-effect waves-light red accent-2"><i class="material-icons">check</i></a>
             </div>
             <div class="card-action">
                 <span th:if="${task.priority == true}"><i class="material-icons">star</i></span>
-<!--                <a href="#">This is a link</a>-->
-<!--                <a href="#">This is a link</a>-->
             </div>
-<!--                <input type="hidden" name="taskId" th:value="${task.id}"/>-->
-
-
-
         </div>
-    <div class="container">
-    <span th:if="${#lists.isEmpty(tasks)}">
-
-        <h5>Wahoo! You don't have any tasks!</h5>
-        <a th:href="@{/task/add}" class="waves-effect waves-light btn-large"><i class="material-icons left">add</i>Add a Task</a>
-<!-- <a  th:href="@{/task/add}" class="btn-floating btn-large halfway-fab waves-effect waves-light red accent-2"><i class="material-icons">add</i></a>-->
+    </div>
+    <div class="card">
+        <span th:if="${#lists.isEmpty(tasks)}">
+            <h6>Wahoo! You don't have any tasks!</h6>
+            <a th:href="@{/task/add}" class="waves-effect waves-light btn-large">Add a Task</a>
         </span>
     </div>
-    </div>
 </div>
-<!--</div>-->
 <div th:fragment = "script"></div>
-
 </body>
 </html>

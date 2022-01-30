@@ -6,12 +6,14 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
     public class Category extends AbstractEntity {
 
+        @Size(max = 25, message = "Sorry! Category cannot exceed 25 characters")
         private String name;
 
         @OneToMany(mappedBy= "category")

@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -32,7 +33,7 @@ public class ProfileController {
     }
 
     @PostMapping("")
-    public String createCategory(Model model, @ModelAttribute Category newCategory, Errors errors) {
+    public String createCategory(Model model, @ModelAttribute @Valid Category newCategory,  Errors errors) {
 
 //        Category category = new Category();
 //        List<Category> categories = (List<Category>) categoryRepository.findAll();
