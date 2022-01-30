@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
-<div th:replace = "fragments :: header"></div>
-<div th:replace = "fragments :: nav"></div>
+<head th:replace = "fragments :: head"></head>
 <body>
+<div th:replace = "fragments :: nav"></div>
 <div class="container">
     <form method="post">
         <h4>Add Tasks</h4>

@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
-<div th:replace = "fragments :: header"></div>
-<div th:replace = "fragments :: nav"></div>
+<head th:replace = "fragments :: head"></head>
+
 <body>
+<div th:replace = "fragments :: nav"></div>
 <div class="container">
     <h4>TaDa! List</h4>
 

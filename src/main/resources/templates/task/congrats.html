@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
-<div th:replace = "fragments :: header"></div>
-<div th:replace = "fragments :: nav"></div>
+<head th:replace = "fragments :: head"></head>
+
 <body>
+<div th:replace = "fragments :: nav"></div>
 <div class="container">
     <a  th:href="@{/task/list/}"><i class="material-icons">cancel</i></a>
     <h2>TaDa!</h2>
