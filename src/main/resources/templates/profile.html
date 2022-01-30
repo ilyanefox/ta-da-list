@@ -13,7 +13,7 @@
         <div class="form-group">
             <h5>
                 <span th:each="category : ${categories}">
-                <a href="#" class="badge rounded-pill bg-warning" th:text="${category.name}"></a>
+                <a th:href="@{/task/filter/{id}(id=${category.id})}" class="badge rounded-pill bg-warning" th:text="${category.name}"></a>
                 </span>
             </h5>
             <br>

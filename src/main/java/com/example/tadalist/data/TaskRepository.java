@@ -10,6 +10,6 @@ import java.util.Optional;
 
 @Repository
 public interface TaskRepository extends CrudRepository<Task, Integer> {
-    List<Task> findByCategory(Category category);
-//   Task findByPriority(Task isPriority);
+//    List<Task> findByCategory(Category category);
+    Optional<Task> findByIsPriority(Boolean isPriority);
 }

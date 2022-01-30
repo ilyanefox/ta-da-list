@@ -64,7 +64,7 @@ public class TaskController {
     }
 
     @GetMapping("filter/{id}")
-    public String displayTaskByCategoryId(@PathVariable("id") int id, Category category, Model model) {
+    public String displayTaskByCategoryId(@PathVariable("id") int id, Model model) {
         Optional<Category> optCategory = categoryRepository.findById(id);
         if (optCategory.isPresent()) {
             Category categoryObj = optCategory.get();
@@ -78,36 +78,79 @@ public class TaskController {
             }
 
         }
+//    @GetMapping("filter-priority")
+//    public String displayTaskByPriority(Model model) {
+//        List<Task> tasks = (List<Task>) taskRepository.findAll();
+//        for (Task task : tasks) {
+//            if (task.isPriority()) {
+////                model.addAttribute("priority", isPriority);
+//                model.addAttribute("task", task);
+//                return "task/filter-priority";
+//            } else {
+//                return "task/list";
+//            }
+//        }
+//        return "task/list";
+//    }
+//            return "task/list";
+
+//        for (Task task : tasks) {
+//            if (task.isPriority()) {
+//                Task taskObj = task.get();
+////                model.addAttribute("priority", isPriority);
+//                model.addAttribute("task", task);
+//                return "task/filter";
+//            } else {
+//                return "task/list";
+//            }
+//        model.addAttribute("categories", categoryRepository.findAll());
+//        model.addAttribute("tasks", taskRepository.findByIsPriority(isPriority));
+//        return "task/filter-priority";
+
 
     @GetMapping("filter-priority")
-    public String displayTaskByPriority(Model model) {
-        List<Task> tasks = (List<Task>) taskRepository.findAll();
-        for (Task task : tasks) {
+    public String displayTaskByPriority(Integer id, Boolean isPriority, Model model) {
+//        Optional<Task> optTask = Optional.ofNullable(taskRepository.findByIsPriority(isPriority));
+//        if (optTask.isPresent()) {
+//            Task task = optTask.get();
+//        Task task = taskRepository.findByIsPriority(isPriority);
+
+
+
+             // Tried this on its own
+//            model.addAttribute("tasks", taskRepository.findByIsPriority(isPriority));
+
+
+
+        //Redundant?
+        Optional<Task> optTask = taskRepository.findByIsPriority(isPriority);
+        if (optTask.isPresent()) {
+            Task task = optTask.get();
             if (task.isPriority()) {
-//                model.addAttribute("priority", isPriority);
-                model.addAttribute("task", task);
-                return "task/filter";
+                model.addAttribute("tasks", task);
+                return "task/filter-priority";
             } else {
                 return "task/list";
             }
+        } else {
+            return "task/list";
         }
-        return "task/list";
     }
-//        Task task = taskRepository.findByPriority(isPriority);
-//        if (optTask.isPresent()) {
-//            Task task = optTask.get();
-//    public String deleteUser(@PathVariable("id") Integer id, Model model) {
-//        Optional<Task> optTask = taskRepository.findById(id);
-//        if (optTask.isPresent()) {
-//            Task task =  optTask.get();
-////            taskRepository.delete(optTask);
-//            taskRepository.delete(task);
-//            return "/task/congrats";
-//        } else {
-//            return "/list";
-//        task.setCompleted(true);
-//    taskRepository.save(task);
-
+            //Didn't work, but at least message was from correct page
+//        List<Task> tasks = (List<Task>) taskRepository.findAll();
+//        for (Task task : tasks) {
+//            if (task.isPriority()) {
+////                Task taskObj = task.get();
+////                model.addAttribute("priority", isPriority);
+//                model.addAttribute("tasks", task);
+//                return "task/filter";
+//            } else {
+//                return "task/list";
+//            }
+//        }
+//        return "task/list";
+//    }
+//    }
 
 
 

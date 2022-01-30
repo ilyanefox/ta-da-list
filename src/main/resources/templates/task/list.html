@@ -5,10 +5,11 @@
 <body>
 <div class="container">
     <h4>TaDa! List</h4>
+
     <div class="form-group">
         <h5>
-            <a href="#" class="badge rounded-pill blue-grey lighten-2" th:text="All"></a>
-            <a href="#" class="badge rounded-pill bg-warning" th:text="Priority"></a>
+            <a th:href="@{/task/list/}" class="badge rounded-pill blue-grey lighten-2" th:text="All"></a>
+<!--            <a th:href="@{/task/filter-priority/}" class="badge rounded-pill bg-warning" th:text="Priority"></a>-->
             <span th:each="category : ${categories}">
             <a th:href="@{/task/filter/{id}(id=${category.id})}" class="badge rounded-pill bg-warning" th:text="${category.name}"></a>
             </span>

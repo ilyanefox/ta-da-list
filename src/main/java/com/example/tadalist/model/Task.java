@@ -35,8 +35,8 @@ import javax.validation.constraints.Size;
         return isPriority;
     }
 
-    public void setPriority(boolean priority) {
-        isPriority = priority;
+    public void setPriority(boolean isPriority) {
+        this.isPriority = isPriority;
     }
 
     public String getName() {
