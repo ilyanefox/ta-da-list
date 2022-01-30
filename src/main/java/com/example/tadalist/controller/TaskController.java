@@ -64,7 +64,7 @@ public class TaskController {
     }
 
     @GetMapping("filter/{id}")
-    public String displayTaskByCategoryId(@PathVariable("id") int id, Integer categoryId, Category category, Model model) {
+    public String displayTaskByCategoryId(@PathVariable("id") int id, Category category, Model model) {
         Optional<Category> optCategory = categoryRepository.findById(id);
         if (optCategory.isPresent()) {
             Category categoryObj = optCategory.get();
@@ -79,39 +79,23 @@ public class TaskController {
 
         }
 
-
-//    }
-//        @PostMapping("/view")
-//        private String checkOffTask(Model model, @RequestBody Task task) {
-//        taskRepository.delete(task);
-//        return "/task/congrats";
-//        }
-//
-//                task.setCompleted(true);
-//                taskRepository.save(task);
-////        if (taskIds != null) {
-////            for (int id  : taskIds) {
-////
-////                taskRepository.deleteById(id);
-////            }
-////            task.isCompleted();
-////            }
-//
-//
-////        }
-//        return "/task/congrats";
-//    }
-//    @PostMapping("/list/")
-//    public String processDeleteEventsForm(@RequestParam(required = false) int[] taskIds) {
-//
-//        if (taskIds != null) {
-//            for (int id : taskIds) {
-//                taskRepository.deleteById(id);
-//            }
-//        }
-//
-//        return "task/list";
-//    }
+    @GetMapping("filter-priority")
+    public String displayTaskByPriority(Model model) {
+        List<Task> tasks = (List<Task>) taskRepository.findAll();
+        for (Task task : tasks) {
+            if (task.isPriority()) {
+//                model.addAttribute("priority", isPriority);
+                model.addAttribute("task", task);
+                return "task/filter";
+            } else {
+                return "task/list";
+            }
+        }
+        return "task/list";
+    }
+//        Task task = taskRepository.findByPriority(isPriority);
+//        if (optTask.isPresent()) {
+//            Task task = optTask.get();
 //    public String deleteUser(@PathVariable("id") Integer id, Model model) {
 //        Optional<Task> optTask = taskRepository.findById(id);
 //        if (optTask.isPresent()) {

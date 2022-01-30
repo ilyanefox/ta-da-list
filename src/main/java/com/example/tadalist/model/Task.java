@@ -19,24 +19,24 @@ import javax.validation.constraints.Size;
         @JoinColumn(name = "category_id", referencedColumnName = "id")
         private Category category;
 
-        private boolean priority;
+        private boolean isPriority;
 
 
         public Task() {
         }
 
-        public Task(String name, Category category, boolean priority) {
+        public Task(String name, Category category, boolean isPriority) {
             this.name = name;
             this.category = category;
-            this.priority = false;
+            this.isPriority = false;
         }
 
     public boolean isPriority() {
-        return priority;
+        return isPriority;
     }
 
     public void setPriority(boolean priority) {
-        this.priority = priority;
+        isPriority = priority;
     }
 
     public String getName() {

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<div th:replace = "fragments :: header"></div>
+<div th:replace = "fragments :: nav"></div>
+<body>
+<div class="container">
+    <h5>
+        <a th:href="@{/task/list/}" class="badge rounded-pill bg-warning" th:text="All"></a>
+        <a th:href="@{/task/filter-priority}" class="badge rounded-pill blue-grey lighten-2" th:text="Priority"></a>
+    </h5>
+    <div class="row">
+        <div class="card teal lighten-3 col-sm-4 mx-2"  th:each="task : ${tasks}" >
+            <div class="card-content white-text">
+                <span class="card-title" th:text="${task.name}"></span>
+                <span class="badge rounded-pill bg-warning" th:text="${task.category.name}"></span>
+                <a  th:href="@{/task/view/{id}(id=${task.id})}" class="btn-floating halfway-fab waves-effect waves-light red accent-2"><i class="material-icons">check</i></a>
+            </div>
+            <div class="card-action">
+                <span th:if="${task.isPriority == true}"><i class="material-icons">star</i></span>
+            </div>
+        </div>
+    </div>
+    <div>
+            <span th:if="${#lists.isEmpty(category.tasks)}">
+                <h5>Wahoo! You don't have any Priority tasks!</h5>
+            </span>
+    </div>
+</div>
+<div th:fragment = "script"></div>
+</body>
+</html>
