@@ -15,7 +15,6 @@ import javax.validation.constraints.Size;
         @Size(max = 25, message = "Sorry! Task cannot exceed 25 characters")
         private String name;
 
-        @NotNull(message = "Oops! A category is required")
         @ManyToOne
         @JoinColumn(name = "category_id", referencedColumnName = "id")
         private Category category;

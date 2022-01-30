@@ -39,9 +39,9 @@ public class ProfileController {
 //        for (Category category : categories) {
 //            if (!category.getName().toLowerCase().equals(newCategory.getName().toLowerCase()))
 ////    {
-//        if (errors.hasErrors()) {
-//            return "profile";
-//        }
+        if (errors.hasErrors()) {
+            return "profile";
+        }
                 categoryRepository.save(newCategory);
 
 

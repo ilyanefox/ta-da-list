@@ -55,7 +55,6 @@ public class TaskController {
         if (optTask.isPresent()) {
             Task task = optTask.get();
             model.addAttribute("task", task);
-//            taskRepository.delete(optTask);
             taskRepository.delete(task);
             return "/task/congrats";
         } else {
@@ -63,6 +62,32 @@ public class TaskController {
 
         }
     }
+
+    @GetMapping("filter/{id}")
+    public String displayTaskByCategoryId(@PathVariable("id") int id, Model model) {
+        Optional<Category> optCategory = categoryRepository.findById(id);
+//        Optional<Task> optTask = taskRepository.findByCategoryId(categoryId);
+        if (optCategory.isPresent()) {
+            Category category = optCategory.get();
+            model.addAttribute("category", category);
+//            if (optTask.isPresent()) {
+//                Task task = optTask.get();
+//                model.addAttribute("task", task);
+////                taskRepository.delete(task);
+
+            return "task/filter";
+//        Optional<Category> optCategory = categoryRepository.findById(id);
+//        if (optCategory.isPresent()) {
+//            Category category = optCategory.get();
+//            model.addAttribute("category", category);
+            } else {
+                return "task/list";
+            }
+
+        }
+
+
+//    }
 //        @PostMapping("/view")
 //        private String checkOffTask(Model model, @RequestBody Task task) {
 //        taskRepository.delete(task);

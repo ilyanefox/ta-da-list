@@ -5,9 +5,15 @@
 <body>
 <div class="container">
     <div class="form-group">
-        <h5><span th:each="category : ${categories}">
 
-        <a href="#" class="badge rounded-pill bg-warning" th:text="${category.name}"></a>
+        <h5>
+<!--            <a href="#" class="badge rounded-pill bg-warning"><i class="material-icons">star</i></a>-->
+            <a href="#" class="badge rounded-pill blue-grey lighten-2" th:text="All"></a>
+            <a href="#" class="badge rounded-pill bg-warning" th:text="Priority"></a>
+
+            <span th:each="category : ${categories}">
+
+        <a th:href="@{/task/filter/{id}(id=${category.id})}" class="badge rounded-pill bg-warning" th:text="${category.name}"></a>
         </span>
         </h5>
 

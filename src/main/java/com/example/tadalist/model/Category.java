@@ -9,6 +9,7 @@ import javax.validation.constraints.NotBlank;
 @Entity
     public class Category extends AbstractEntity {
 
+//        @Column(unique=true)
         private String name;
 
         public Category() {
