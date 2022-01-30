@@ -15,7 +15,7 @@ import javax.validation.constraints.Size;
         @Size(max = 25, message = "Sorry! Task cannot exceed 25 characters")
         private String name;
 
-        @ManyToOne
+        @ManyToOne(cascade=CascadeType.PERSIST)
         @JoinColumn(name = "category_id", referencedColumnName = "id")
         private Category category;
 

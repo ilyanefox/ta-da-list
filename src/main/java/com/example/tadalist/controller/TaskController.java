@@ -64,22 +64,15 @@ public class TaskController {
     }
 
     @GetMapping("filter/{id}")
-    public String displayTaskByCategoryId(@PathVariable("id") int id, Model model) {
+    public String displayTaskByCategoryId(@PathVariable("id") int id, Integer categoryId, Category category, Model model) {
         Optional<Category> optCategory = categoryRepository.findById(id);
-//        Optional<Task> optTask = taskRepository.findByCategoryId(categoryId);
         if (optCategory.isPresent()) {
-            Category category = optCategory.get();
-            model.addAttribute("category", category);
-//            if (optTask.isPresent()) {
-//                Task task = optTask.get();
-//                model.addAttribute("task", task);
-////                taskRepository.delete(task);
+            Category categoryObj = optCategory.get();
+            model.addAttribute("category", categoryObj);
+            model.addAttribute("tasks", categoryObj.getTasks());
 
             return "task/filter";
-//        Optional<Category> optCategory = categoryRepository.findById(id);
-//        if (optCategory.isPresent()) {
-//            Category category = optCategory.get();
-//            model.addAttribute("category", category);
+//
             } else {
                 return "task/list";
             }
