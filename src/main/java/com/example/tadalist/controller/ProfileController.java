@@ -35,11 +35,6 @@ public class ProfileController {
     @PostMapping("")
     public String createCategory(Model model, @ModelAttribute @Valid Category newCategory,  Errors errors) {
 
-//        Category category = new Category();
-//        List<Category> categories = (List<Category>) categoryRepository.findAll();
-//        for (Category category : categories) {
-//            if (!category.getName().toLowerCase().equals(newCategory.getName().toLowerCase()))
-////    {
         if (errors.hasErrors()) {
             return "profile";
         }
@@ -57,13 +52,6 @@ public class ProfileController {
         return "redirect:/profile";
     }
 
-//    @GetMapping("/delete")
-//    public String getCategoriesToDelete(Model model) {
-//        List<Category> categories = (List<Category>) categoryRepository.findAll();
-//        model.addAttribute("categories", categories);
-//        model.addAttribute("category", new Category());
-//        return "/delete";
-//    }
 //
 //    @PostMapping("/delete")
 //    public String deleteCategory(Model model, @ModelAttribute Category oldCategory) {

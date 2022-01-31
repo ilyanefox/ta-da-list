@@ -53,6 +53,10 @@ public class User extends AbstractEntity {
 //        this.categories = categories;
 //    }
 
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
     public String getFirstName() {
         return firstName;
     }

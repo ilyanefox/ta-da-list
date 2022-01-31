@@ -22,7 +22,7 @@
             <form method="post" th:action="@{/profile/}" th:object="${category}" >
             <div>
                 <label for="name"></label>
-                <input id="name" placeholder="Add Category! Ex: Work, School..." required type="text" th:field="*{name}"
+                <input id="name" name="name" placeholder="Add Category! Ex: Work, School..." type="text" th:field="*{name}" required
                class="form-control"/>
                     <span th:errors="${category.name}" class="error"></span>
             </div>
