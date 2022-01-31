@@ -22,12 +22,10 @@ public class User extends AbstractEntity {
     @NotNull
     private String pwHash;
 
-    @OneToMany
-    @JoinColumn(name = "user_id")
+    @OneToMany(mappedBy="user")
     private List<Category> categories = new ArrayList<>();
 
-    @OneToMany
-    @JoinColumn(name = "user_id")
+    @OneToMany(mappedBy="user")
     private List<Task> taskList = new ArrayList<>();
 
 

@@ -2,9 +2,7 @@ package com.example.tadalist.model;
 
 import com.example.tadalist.AbstractEntity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.util.ArrayList;
@@ -18,6 +16,10 @@ import java.util.List;
 
         @OneToMany(mappedBy= "category")
         private List<Task> tasks = new ArrayList<>();
+
+        @ManyToOne
+        @JoinColumn(name = "user_id")
+        private User user;
 
         public Category() {
         }
