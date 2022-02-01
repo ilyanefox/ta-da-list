@@ -29,6 +29,7 @@ public class ProfileController {
         List<Category> categories = (List<Category>) categoryRepository.findAll();
         model.addAttribute("categories", categories);
         model.addAttribute("category", new Category());
+        System.out.println("This works");
         return "profile";
     }
 
@@ -45,12 +46,12 @@ public class ProfileController {
     }
 
 
-    @PostMapping("/delete")
-    public String deleteCategory(Model model, @ModelAttribute String name) {
-
-        categoryRepository.deleteByName(name);
-        return "redirect:/profile";
-    }
+//    @PostMapping("/delete")
+//    public String deleteCategory(Model model, @ModelAttribute String name) {
+//
+//        categoryRepository.deleteByName(name);
+//        return "redirect:/profile";
+//    }
 
 //
 //    @PostMapping("/delete")

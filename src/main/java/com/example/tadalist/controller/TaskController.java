@@ -107,7 +107,7 @@ public class TaskController {
 //        model.addAttribute("tasks", taskRepository.findByIsPriority(isPriority));
 //        return "task/filter-priority";
 
-
+// Not working
     @GetMapping("filter-priority")
     public String displayTaskByPriority(Integer id, Boolean isPriority, Model model) {
 //        Optional<Task> optTask = Optional.ofNullable(taskRepository.findByIsPriority(isPriority));

@@ -17,19 +17,28 @@ import java.util.List;
         @OneToMany(mappedBy= "category")
         private List<Task> tasks = new ArrayList<>();
 
-        @ManyToOne
-        @JoinColumn(name = "user_id")
+        @ManyToOne(cascade = CascadeType.ALL)
+        @JoinColumn(name = "user_id", referencedColumnName = "id")
         private User user;
 
         public Category() {
         }
 
-        public Category(String name, List<Task> tasks) {
+        public Category(String name, List<Task> tasks, User user) {
             this.name = name;
             this.tasks = tasks;
+            this.user = user;
         }
 
-        public String getName() {
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public String getName() {
             return name;
         }
 

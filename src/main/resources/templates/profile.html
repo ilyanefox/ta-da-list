@@ -8,7 +8,7 @@
     <h3>Howdy {name}!</h3>
     <br>
     <h4>Your Categories</h4>
-
+    <form method="post" th:action="@{/profile/}" th:object="${category}" >
         <div class="form-group">
             <h5>
                 <span th:each="category : ${categories}">
@@ -19,14 +19,15 @@
             <span th:if="${#lists.isEmpty(categories)}">
                 <p colspan="5">You don't have any categories yet! Add some...</p>
             </span>
-            <form method="post" th:action="@{/profile/}" th:object="${category}" >
+
             <div>
                 <label for="name"></label>
-                <input id="name" name="name" placeholder="Add Category! Ex: Work, School..." type="text" th:field="*{name}" required
+                <input type="text" id="name" name="name"  placeholder="Add Category! Ex: Work, School..." th:value="${category.name}" required
                class="form-control"/>
-                    <span th:errors="${category.name}" class="error"></span>
+<!--                    <span th:errors="${category}" class="error"></span>-->
             </div>
             <button type="submit" class="btn-floating btn-large waves-effect waves-light teal lighten-2"><i class="material-icons">add</i></button>
+        </div>
         </form>
         </div>
     <br>

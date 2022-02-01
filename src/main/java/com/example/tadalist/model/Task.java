@@ -21,8 +21,8 @@ public class Task extends AbstractEntity {
 
     private boolean isPriority;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
 
     public Task() {

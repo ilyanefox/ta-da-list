@@ -30,6 +30,20 @@ public class AuthenticationController {
         session.setAttribute(userSessionKey, user.getId());
     }
 
+    public User getUserFromSession(HttpSession session) {
+        Integer userId = (Integer) session.getAttribute(userSessionKey);
+        if (userId == null) {
+            return null;
+        }
+        Optional<User> user = userRepository.findById(userId);
+
+        if (user.isEmpty()) {
+            return null;
+        }
+        return user.get();
+    }
+
+
     @GetMapping("/register")
     public String displayRegistrationForm(Model model) {
         model.addAttribute(new RegisterFormDTO());
@@ -67,7 +81,7 @@ public class AuthenticationController {
         userRepository.save(newUser);
         setUserInSession(request.getSession(), newUser);
 
-        return "redirect:profile";
+        return "redirect:/profile";
     }
 
     @GetMapping("/login")
@@ -105,7 +119,7 @@ public class AuthenticationController {
 
         setUserInSession(request.getSession(), theUser);
 
-        return "redirect:task/list";
+        return "redirect:/task/list";
     }
 
     @GetMapping("/logout")
@@ -115,18 +129,6 @@ public class AuthenticationController {
     }
 
 
-//    public User getUserFromSession(HttpSession session) {
-//        Integer userId = (Integer) session.getAttribute(userSessionKey);
-//        if (userId == null) {
-//            return null;
-//        }
-//        Optional<User> user = userRepository.findById(userId);
-//
-//        if (user.isEmpty()) {
-//            return null;
-//        }
-//        return user.get();
-//    }
-//
-//
+
+
 }
